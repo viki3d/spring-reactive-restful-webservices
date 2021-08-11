@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="https://www.thymeleaf.org" 
+		xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+		>
+<head>
+	<div th:replace="~{ fragments/frag.head.common.plugins.html :: headcommonplugins }"></div>
+	<!-- page custom plugins here -->
+</head>	
+<body>
+
+	<h1>/reactcall/cars/<span th:text="${carId}">carId</span></h1>
+	<h4><a href="http://localhost:8081">back to Index</a></h4>
+	<div th:if="${car!=null}">
+		<div><b>Synchronous call</b></div>
+		<div th:text="${car}" class="app-red">retrieved car</div>
+		<div th:text="${'Call completed for ' + callDuration + ' milliseconds'}">call duration</div>
+	</div>
+	<div th:if="${car==null}">
+		<div><b>Asynchronous call</b></div>
+		<div>The result will be received server-side in a while.</div>
+		<div id="preloader_description">We are bringing result here...</div>
+		<div id="cached_car" class="app-red">
+			<img th:src="@{/plugins/app/preloader.gif}" class="app-preloader" />
+		</div>
+		<div id="cached_duration" class="app-red">
+			<img th:src="@{/plugins/app/preloader.gif}" class="app-preloader" />
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				checkForCarResult();
+			}); 
+		</script>
+	</div>
+
+</body>
+</html>

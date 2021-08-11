@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="https://www.thymeleaf.org" 
+		xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+		>
+<head>
+	<div th:replace="~{ fragments/frag.head.common.plugins.html :: headcommonplugins }"></div>
+	<!-- page custom plugins here -->
+</head>	
+<body>
+
+	<h1>Cars API</h1>
+	<table>
+		<tr th:each="index : ${#numbers.sequence(1, 5)}">
+			<td >
+				<a th:href="${'http://localhost:8081/reactcall/cars/' + index}">
+					get(<span th:text="${index}"></span>)
+				</a>
+			</td>
+		</tr>
+		<tr >
+			<td>
+				<a href="http://localhost:8081/reactcall/cars">all()</a>			
+			</td>
+		</tr>
+	</table>	
+
+</body>
+</html>
+
+

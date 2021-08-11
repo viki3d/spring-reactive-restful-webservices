@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="https://www.thymeleaf.org" 
+		xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+		>
+<head>
+	<div th:replace="~{ fragments/frag.head.common.plugins.html :: headcommonplugins }"></div>
+	<!-- page custom plugins here -->
+</head>	
+<body>
+
+	<h1>/reactcall/cars/</h1>
+	<h4><a href="http://localhost:8081">back to Index</a></h4>
+	
+	<div th:if="${cars.length > 0}">
+		<table>
+			<tr th:each="car : ${cars}">
+				<td th:text="${car.id}"    class="app-red"></td>
+				<td th:text="${car.brand}" class="app-red"></td>
+				<td th:text="${car.model}" class="app-red"></td>
+				<td th:text="${car.color}" class="app-red"></td>
+			</tr>
+		</table>
+		<div th:text="${'Call completed for ' + callDuration + ' milliseconds'}">call duration</div>
+	</div>
+	<div th:if="${cars.length == 0}">
+		<div><b>Asynchronous call</b></div>
+		<div>The result will be received server-side in a while.</div>
+	</div>
+	
+</body>
+</html>
+
