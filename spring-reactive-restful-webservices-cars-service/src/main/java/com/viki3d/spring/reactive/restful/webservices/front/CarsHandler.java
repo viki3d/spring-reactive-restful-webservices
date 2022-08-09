@@ -33,7 +33,7 @@ public class CarsHandler {
    */
   public Mono<ServerResponse> get(ServerRequest request) {
     Mono<ServerResponse> serverResponse;
-    long carId = Long.valueOf(request.pathVariable("id"));
+    long carId = Long.parseLong(request.pathVariable("id"));
 
     Optional<Car> car = carsMockService.get(carId);
     if (car.isEmpty()) {

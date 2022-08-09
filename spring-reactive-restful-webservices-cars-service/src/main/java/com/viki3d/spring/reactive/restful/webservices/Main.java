@@ -6,6 +6,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * The default SpringBoot configuration class.
+ *
+ * @author Victor Kirov
  */
 @SpringBootApplication
 public class Main {
